@@ -6,7 +6,7 @@ const locale = {
 	GALLERY: 'Galerisi',
 	ABOUT_US: 'Hakkımızda',
 	SFORZANDO: 'Sforzando',
-	JURY: 'Jüri',
+	JUDGE: 'Jüri',
 	CONTACTS: 'Kişiler'
 };
 

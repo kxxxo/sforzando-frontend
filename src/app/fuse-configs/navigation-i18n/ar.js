@@ -6,8 +6,7 @@ const locale = {
 	GALLERY: 'صالة عرض',
 	ABOUT_US: 'معلومات عنا',
 	SFORZANDO: 'Sforzando',
-	JURY: 'هيئة المحلفين',
-	CONTACTS: 'جهات الاتصال'
+	JUDGE: 'هيئة المحلفين'
 };
 
 export default locale;

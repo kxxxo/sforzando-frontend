@@ -58,20 +58,12 @@ const navigationConfig = [
 				url: '/about/sforzando'
 			},
 			{
-				id: 'about-jury',
-				title: 'About Jury',
-				translate: 'JURY',
+				id: 'about-judges',
+				title: 'About Judges',
+				translate: 'JUDGE',
 				type: 'item',
 				icon: 'groups',
-				url: '/about/jury'
-			},
-			{
-				id: 'about-contact',
-				title: 'Contacts',
-				translate: 'CONTACTS',
-				type: 'item',
-				icon: 'contact_phone',
-				url: '/about/contacts'
+				url: '/about/judges'
 			}
 		]
 	}

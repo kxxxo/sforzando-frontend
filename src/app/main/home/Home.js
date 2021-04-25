@@ -1,12 +1,12 @@
 import React from 'react';
 import HomeCarousel from '../components/HomeCarousel';
-import HomeCompilation from '../components/HomeCompilations';
+import HomeCompetition from '../components/HomeCompetitions/HomeCompetitions';
 
 function HomePage() {
 	return (
 		<React.Fragment>
 			<HomeCarousel />
-			<HomeCompilation />
+			<HomeCompetition />
 		</React.Fragment>
 	);
 }

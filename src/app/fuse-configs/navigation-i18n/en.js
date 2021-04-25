@@ -6,8 +6,7 @@ const locale = {
 	GALLERY: 'Gallery',
 	ABOUT_US: 'About us',
 	SFORZANDO: 'Sforzando',
-	JURY: 'Jury',
-	CONTACTS: 'Contacts'
+	JUDGE: 'Judge'
 };
 
 export default locale;

@@ -1,33 +1,37 @@
-import Icon from '@material-ui/core/Icon';
-import Input from '@material-ui/core/Input';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import HttpConfig from "../../config/HttpConfig";
+import Container from "@material-ui/core/Container";
+import CompetitionCard from "../competition/CompetitionCard";
 
 function ResultsPage() {
+	const [data, setData] = useState(null);
+
+	useEffect(() => {
+		axios.get(HttpConfig.get_last_10_competition_with_results_url).then(res => {
+			setData(res.data);
+		});
+	}, []);
+
+	if (!data) {
+		return null;
+	}
+
 	return (
 		<div className="flex flex-col flex-1 items-center justify-center p-16">
-			<div className="max-w-512 text-center">
-				<motion.div
-					initial={{ opacity: 0, scale: 0.6 }}
-					animate={{ opacity: 1, scale: 1, transition: { delay: 0.1 } }}
-				>
-					<Typography variant="h1" color="inherit" className="font-medium mb-16">
-						404
-					</Typography>
-				</motion.div>
-
-				<motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.2 } }}>
-					<Typography variant="h5" color="textSecondary" className="mb-16 font-normal">
-						Sorry but we could not find the page you are looking for
-					</Typography>
-				</motion.div>
-
-				<Link className="font-normal" to="/apps/dashboards/project">
-					Go back to home page
-				</Link>
-			</div>
+			<Container fixed>
+				{data.map(competition => (
+					<CompetitionCard
+						key = {competition.id}
+						image={HttpConfig.domain + competition.img_url}
+						title={competition.competitionLanguages[0].title}
+						text={competition.competitionLanguages[0].text}
+						start_date = {competition.start_date }
+						is_ended = {competition.is_ended}
+						result_url = {competition.result_url}
+					/>
+				))}
+			</Container>
 		</div>
 	);
 }

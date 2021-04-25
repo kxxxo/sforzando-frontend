@@ -1,7 +1,6 @@
 // import i18next from 'i18next';
 import AboutPage from './About';
-import ContactPage from './Contacts';
-import JuryPage from './Jury';
+import JudgesPage from './Judges';
 
 // import en from './i18n/en';
 // import tr from './i18n/tr';
@@ -23,12 +22,8 @@ const AboutConfig = {
 			component: AboutPage
 		},
 		{
-			path: '/about/contacts',
-			component: ContactPage
-		},
-		{
-			path: '/about/jury',
-			component: JuryPage
+			path: '/about/judges',
+			component: JudgesPage
 		}
 	]
 };
