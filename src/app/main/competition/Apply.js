@@ -25,7 +25,7 @@ function ApplyPage() {
 				</motion.div>
 
 				<Link className="font-normal" to="/apps/dashboards/project">
-					Go back to home page
+					SOMEBODY
 				</Link>
 			</div>
 		</div>
