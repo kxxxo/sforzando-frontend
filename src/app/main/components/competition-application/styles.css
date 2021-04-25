@@ -1,0 +1,151 @@
+/*.second-page {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  flex-direction: column;*/
+/*  !*border: 1px solid red; *!*/
+/*}*/
+
+.second-page__mainForm {
+	display: flex;
+	flex-direction: column;
+	/*border: 1px solid green;*/
+	justify-content: center;
+	align-items: center;
+	width: 95vh;
+}
+.second-page__inputs {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	width: 80%;
+}
+
+/*.second-page__nameForm,*/
+.second-page__nameOfSchool {
+	width: 100%;
+}
+.second-page__ovz {
+	display: flex;
+	justify-content: space-around;
+}
+
+.second-page__country,
+.second-page__phone,
+.second-page__ovz,
+.second-page__formOfPerfomance {
+	width: 45%;
+}
+
+.second-page__dateOfBirth {
+	width: 40%;
+}
+
+.row {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	align-items: center;
+}
+
+.input {
+	line-height: 1.5em;
+	border-radius: 4px;
+	padding: 4px 6px;
+	box-sizing: border-box;
+	margin-top: 20px;
+	width: 100%;
+}
+
+.height-input {
+	line-height: 1.5em;
+	border-radius: 4px;
+	padding: 4px 6px;
+	box-sizing: border-box;
+	margin-top: 20px;
+	width: 100%;
+	height: 70px;
+}
+
+.error {
+	color: red;
+	font-weight: 700;
+	font-size: 12px;
+}
+.smallError {
+
+}
+
+
+.second-page__radio {
+	margin: 10px auto;
+	display: flex;
+	width: 95vh;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.second-page__title {
+	margin: 20px auto;
+}
+.second-page__teacher,
+.second-page__comment {
+	width: 100%;
+}
+.second-page__comment {
+	margin-bottom: 30px;
+}
+
+.MuiFormHelperText-contained-283 {
+	margin: 0;
+}
+
+.second-page__button {
+	padding: 15px 50px;
+	background: #516baf;
+	color: #fff;
+}
+
+textarea {
+	resize: none;
+}
+
+.button-send-container {
+	margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+	.second-page__mainForm {
+		width: 90%;
+	}
+	.second-page__radio {
+		width: auto;
+	}
+	.second-page__title {
+		font-size: 1.5em;
+	}
+}
+@media screen and (max-width: 320px) {
+	.second-page__title {
+		font-size: 1.2em;
+	}
+	.button-send-container {
+		justify-content: center;
+	}
+	.second-page__dateOfBirth {
+		width: 100%;
+	}
+	.row {
+		display: block;
+	}
+	.second-page__country,
+	.second-page__formOfPerfomance,
+	.second-page__phone {
+		width: 100%;
+	}
+	.second-page__ovz {
+		margin-top: 10%;
+		/*display: flex;*/
+		justify-content: center;
+	}
+}
