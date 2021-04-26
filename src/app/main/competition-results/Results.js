@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import HttpConfig from "../../config/HttpConfig";
 import Container from "@material-ui/core/Container";
+import HttpConfig from "../../config/HttpConfig";
 import CompetitionCard from "../competition/CompetitionCard";
 
 function ResultsPage() {
 	const [data, setData] = useState(null);
 
 	useEffect(() => {
-		axios.get(HttpConfig.get_last_10_competition_with_results_url).then(res => {
+		axios.get(HttpConfig.getLast10CompetitionWithResultsUrl).then(res => {
 			setData(res.data);
 		});
 	}, []);

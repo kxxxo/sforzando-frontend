@@ -10,25 +10,21 @@ import axios from "axios";
 import HttpConfig from "../../config/HttpConfig";
 
 class GalleryHeader extends Component{
-	constructor(props) {
-		super(props);
-	};
-
 	handleReset () {
 		if (this.props.onReset) {
 			this.props.onReset();
 		}
 	};
+
 	render() {
 		return (
-
 			<div>
 				{
 					this.props.data.path !== "/" &&
 						<div>
 							<Button onClick={() => {this.handleReset()}} >
 								<Icon>arrow_back</Icon>
-								<Typography variant={"h5"}>{this.props.data.name}</Typography>
+								<Typography variant="h5">{this.props.data.name}</Typography>
 							</Button>
 						</div>
 				}

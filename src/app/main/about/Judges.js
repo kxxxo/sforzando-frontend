@@ -7,14 +7,14 @@ import { motion } from 'framer-motion';
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import HttpConfig from "../../config/HttpConfig";
 import Container from "@material-ui/core/Container";
+import HttpConfig from "../../config/HttpConfig";
 
 function JudgesPage() {
 	const [data, setData] = useState(null);
 
 	useEffect(() => {
-		axios.get(HttpConfig.get_judges_url).then(res => {
+		axios.get(HttpConfig.getJudgesUrl).then(res => {
 			setData(res.data);
 		});
 	}, []);
@@ -22,18 +22,18 @@ function JudgesPage() {
 	if (!data) {
 		return null;
 	}
-	let container = {
+	const container = {
 		show: {
 			transition: {
 				staggerChildren: 0.1
 			}
 		}
 	}
-	let item = {
+	const item = {
 		hidden: {opacity: 0, y: 20},
 		show: {opacity: 1, y: 0}
 	}
-	let rawText = (txt)=> {
+	const rawText = (txt)=> {
 		return {__html: txt};
 	}
 	return (

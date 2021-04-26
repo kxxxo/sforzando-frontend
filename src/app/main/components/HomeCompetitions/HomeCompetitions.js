@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-
 import Button from '@material-ui/core/Button';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import CompetitionCard from "./CompetitionCard";
 import HttpConfig from "../../../config/HttpConfig";
-import { Link } from "@material-ui/core";
 
 
 
@@ -16,7 +14,7 @@ function HomeCompetitions() {
 	const [data, setData] = useState(null);
 
 	useEffect(() => {
-		axios.get(HttpConfig.get_last_3_competition_url).then(res => {
+		axios.get(HttpConfig.getLast3CompetitionUrl).then(res => {
 			setData(res.data);
 		});
 	}, []);

@@ -27,8 +27,7 @@ import './styles.css';
 import HttpConfig from "../../../config/HttpConfig";
 
 function CompetitionApplication(props) {
-	let params = queryString.parse(props.location.search)
-
+	const params = queryString.parse(props.location.search)
 
 	const useStyles = makeStyles(theme => ({
 		root: {
@@ -130,8 +129,8 @@ function CompetitionApplication(props) {
 								onSubmit={values => {
 									axios({
 										method: 'post',
-										url: HttpConfig.create_application_url,
-										data: Object.assign({competition_id:params.id},values),
+										url: HttpConfig.createApplicationUrl,
+										data: {...{competition_id:params.id},...values},
 										headers: {
 											'Content-Type': 'application/json; charset=UTF-8',
 											"Access-Control-Allow-Origin": "*"
@@ -144,7 +143,6 @@ function CompetitionApplication(props) {
 									});
 								}}
 								validateOnChange={e=>{
-									debugger;
 								}}
 
 								validationSchema={validationsSchema}
@@ -195,8 +193,8 @@ function CompetitionApplication(props) {
 												margin="normal"
 												className="input"
 												helperText="Участников"
-												type={'number'}
-												name={`amountOfPatricipants`}
+												type="number"
+												name="amountOfPatricipants"
 												onBlur={handleBlur}
 												onChange={handleChange}
 												value={values.amountOfPatricipants}
@@ -232,9 +230,9 @@ function CompetitionApplication(props) {
 												size="medium"
 												margin="normal"
 												placeholder="ФИО исполнителя/ Название коллектива (по данной информации будет заполняться диплом)"
-												className={`input`}
-												type={`text`}
-												name={`name`}
+												className="input"
+												type="text"
+												name="name"
 												onBlur={handleBlur}
 												onChange={handleChange}
 												value={values.name}
@@ -250,8 +248,8 @@ function CompetitionApplication(props) {
 													margin="normal"
 													placeholder="Возрастная группа и сколько полных лет"
 													className="input"
-													type={'text'}
-													name={`fullAge`}
+													type="text"
+													name="fullAge"
 													onBlur={handleBlur}
 													onChange={handleChange}
 													value={values.fullAge}
@@ -263,7 +261,7 @@ function CompetitionApplication(props) {
 											<div className="second-page__ovz">
 												<FormControl >
 													<RadioGroup
-														className={'block'}
+														className="block"
 														aria-label="gender"
 														name="picked"
 														value={values.picked}
@@ -324,9 +322,9 @@ function CompetitionApplication(props) {
 												size="medium"
 												margin="normal"
 												placeholder="Образовательное учреждение (Писать полностью!)"
-												className={`input`}
-												type={`text`}
-												name={`nameOfSchool`}
+												className="input"
+												type="text"
+												name="nameOfSchool"
 												onBlur={handleBlur}
 												onChange={handleChange}
 												value={values.nameOfSchool}
@@ -342,9 +340,9 @@ function CompetitionApplication(props) {
 													size="medium"
 													margin="normal"
 													placeholder="Город"
-													className={`input`}
-													type={`text`}
-													name={`country`}
+													className="input"
+													type="text"
+													name="country"
 													onBlur={handleBlur}
 													onChange={handleChange}
 													value={values.country}
@@ -360,9 +358,9 @@ function CompetitionApplication(props) {
 													size="medium"
 													margin="normal"
 													placeholder="Телефон для связи"
-													className={`input`}
-													type={`text`}
-													name={`phone`}
+													className="input"
+													type="text"
+													name="phone"
 													onBlur={handleBlur}
 													onChange={handleChange}
 													value={values.phone}
@@ -379,9 +377,9 @@ function CompetitionApplication(props) {
 												size="medium"
 												margin="normal"
 												placeholder="Программа выступления с указанием инициалов авторов произведений,точного хронометража"
-												className={`input`}
-												type={`text`}
-												name={`formOfPerfomance`}
+												className="input"
+												type="text"
+												name="formOfPerfomance"
 												onBlur={handleBlur}
 												onChange={handleChange}
 												value={values.formOfPerfomance}
@@ -400,9 +398,9 @@ function CompetitionApplication(props) {
 												margin="normal"
 												rows="3"
 												placeholder=" Преподаватель"
-												className={`height-input`}
-												type={`text`}
-												name={`teacher`}
+												className="height-input"
+												type="text"
+												name="teacher"
 												onBlur={handleBlur}
 												onChange={handleChange}
 												value={values.teacher}
@@ -414,7 +412,7 @@ function CompetitionApplication(props) {
 										<div className="row">
 											{/*Телефон преподавателя*/}
 											<TextField
-												className={`input`}
+												className="input"
 												size="medium"
 												type="text"
 												value={values.teacherPhone}
@@ -426,7 +424,7 @@ function CompetitionApplication(props) {
 											<ErrorMessage name="teacherPhone" component="p" className="error" />
 											{/*Email преподавателя*/}
 											<TextField
-												className={`input`}
+												className="input"
 												size="medium"
 												type="text"
 												value={values.teacherMail}
@@ -445,10 +443,10 @@ function CompetitionApplication(props) {
 												size="medium"
 												margin="normal"
 												rows="3"
-												placeholder=" Концертмейстер (если есть)"
-												className={`height-input`}
-												type={`text`}
-												name={`concertMaester`}
+												placeholder="Концертмейстер (если есть)"
+												className="height-input"
+												type="text"
+												name="concertMaester"
 												onBlur={handleBlur}
 												onChange={handleChange}
 												value={values.concertMaester}
@@ -458,7 +456,7 @@ function CompetitionApplication(props) {
 										<div className="row">
 											{/*Телефон преподавателя*/}
 											<TextField
-												className={`input`}
+												className="input"
 												size="medium"
 												type="text"
 												value={values.concertMaesterPhone}
@@ -470,7 +468,7 @@ function CompetitionApplication(props) {
 
 											{/*Email преподавателя*/}
 											<TextField
-												className={`input`}
+												className="input"
 												size="medium"
 												type="text"
 												value={values.concertMaesterMail}
@@ -487,10 +485,10 @@ function CompetitionApplication(props) {
 												size="medium"
 												margin="normal"
 												rows="3"
-												placeholder=" Родитель (Если есть)"
-												className={`height-input`}
-												type={`text`}
-												name={`parents`}
+												placeholder="Родитель (Если есть)"
+												className="height-input"
+												type="text"
+												name="parents"
 												onBlur={handleBlur}
 												onChange={handleChange}
 												value={values.parents}
@@ -500,7 +498,7 @@ function CompetitionApplication(props) {
 										<div className="row">
 											{/*Телефон преподавателя*/}
 											<TextField
-												className={`input`}
+												className="input"
 												size="medium"
 												type="text"
 												value={values.parentsPhone}
@@ -511,7 +509,7 @@ function CompetitionApplication(props) {
 											/>
 											{/*Email преподавателя*/}
 											<TextField
-												className={`input`}
+												className="input"
 												size="medium"
 												type="text"
 												value={values.parentsMail}
@@ -529,9 +527,9 @@ function CompetitionApplication(props) {
 												size="medium"
 												margin="normal"
 												placeholder="Комментарий"
-												className={`height-input`}
-												type={`text`}
-												name={`comment`}
+												className="height-input"
+												type="text"
+												name="comment"
 												onBlur={handleBlur}
 												onChange={handleChange}
 												multiline

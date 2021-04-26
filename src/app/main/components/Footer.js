@@ -35,7 +35,7 @@ function Footer() {
 
 					<div className="footer-items">
 						<h3>Contact us</h3>
-						<div className="border1"></div>
+						<div className="border1"/>
 						<ul>
 							<li><FontAwesomeIcon icon={faMapMarker} size="1x"/>&nbsp; Россия, г. Казань, ул. Чехова д.51 кв. 65</li>
 							<li><FontAwesomeIcon icon={faPhone} size="1x"/>&nbsp; <a href="tel:+79534828494">+7 (953) 482-84-94</a>, <a href="tel:+79003289926">+7 (900) 328-99-26</a> </li>

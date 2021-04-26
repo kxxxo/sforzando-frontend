@@ -6,12 +6,10 @@ import Card from "@material-ui/core/Card";
 import React, { Component } from "react";
 
 class CompetitionCard extends Component{
-	constructor(props) {
-		super(props);
-	}
 	rawText() {
 		return { __html: this.props.text };
 	}
+
 	render() {
 		return (
 			<Card style={{ maxWidth: 345 }}>

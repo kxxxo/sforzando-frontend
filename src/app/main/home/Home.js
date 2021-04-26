@@ -4,10 +4,10 @@ import HomeCompetition from '../components/HomeCompetitions/HomeCompetitions';
 
 function HomePage() {
 	return (
-		<React.Fragment>
+		<>
 			<HomeCarousel />
 			<HomeCompetition />
-		</React.Fragment>
+		</>
 	);
 }
 

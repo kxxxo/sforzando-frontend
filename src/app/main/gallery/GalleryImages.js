@@ -10,14 +10,11 @@ class GalleryImages extends Component{
 			}
 		}
 	};
+
 	item = {
 		hidden: { opacity: 0, y: 20 },
 		show: { opacity: 1, y: 0 }
 	};
-
-	constructor(props) {
-		super(props);
-	}
 
 	render() {
 		return (

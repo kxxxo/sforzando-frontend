@@ -14,10 +14,6 @@ import HttpConfig from "../../config/HttpConfig";
 
 
 class CompetitionCard extends Component{
-	constructor(props) {
-		super(props);
-	}
-
 	container = {
 		show: {
 			transition: {
@@ -25,18 +21,22 @@ class CompetitionCard extends Component{
 			}
 		}
 	}
+
 	item = {
 		hidden: {opacity: 0, y: 20},
 		show: {opacity: 1, y: 0}
 	}
-	rawText() {
-		return { __html: this.props.text };
-	}
+
 	getStartDate() {
 		return (new Date(this.props.start_datetime)).toLocaleDateString()
 	}
 
+	rawText() {
+		return { __html: this.props.text };
+	}
+
 	render() {
+		const url = `/competition/application?id=${this.props.id}`;
 		return (
 			<Card className="mb-32 overflow-hidden rounded-16 shadow">
 				<CardContent className="py-0">
@@ -64,7 +64,8 @@ class CompetitionCard extends Component{
 				</CardContent>
 				<CardActions disableSpacing className="px-16 pb-16">
 					{!this.props.is_ended &&
-					<Button variant="contained" color="primary" size="large" style={{margin: "auto"}} href={"/competition/application?id="+this.props.id} role="button">
+					<Button variant="contained" color="primary" size="large" style={{margin: "auto"}}
+							href={url} role="button">
 						Участвовать
 					</Button>
 					}

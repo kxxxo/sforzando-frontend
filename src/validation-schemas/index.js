@@ -2,7 +2,7 @@ import * as yup from 'yup';
 
 export const EMAIL_MAX_LENGTH = 64;
 
-const emailRegexp = /^[a-z0-9\-!#$%&'*.+\/=?^_`{|}~]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/gi;
+const emailRegexp = /^[a-z0-9\-!#$%&'*.+/=?^_`{|}~]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/gi;
 
 const validationsSchema = yup.object().shape({
 	name: yup.string().typeError('Должно быть строкой').required('Обязательно'),
