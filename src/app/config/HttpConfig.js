@@ -1,5 +1,5 @@
 export default class HttpConfig {
-	static domain = 'http://sforzando-backend.kxxo.ru/';
+	static domain = 'http://sforzando-backend.kxxo.ru';
 
 	static getLast3CompetitionUrl = `${this.domain}/site/get-competitions?page=1&count=3`;
 
