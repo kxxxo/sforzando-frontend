@@ -1,5 +1,5 @@
 export default class HttpConfig {
-	static domain = 'http://localhost:82';
+	static domain = 'http://sforzando-backend.kxxo.ru/';
 	static get_last_3_competition_url = this.domain + '/site/get-competitions?page=1&count=3';
 	static get_last_10_competition_url = this.domain + '/site/get-competitions?page=1&count=10';
 	static get_last_10_competition_with_results_url = this.domain + '/site/get-competitions?page=1&count=10&result=1';
