@@ -31,6 +31,7 @@ function ListPage() {
 				{data.map(competition => (
 					<CompetitionCard
 						key = {competition.id}
+						id = {competition.id}
 						image={HttpConfig.domain + competition.img_url}
 					 	title={competition.competitionLanguages[0].title}
 						text={competition.competitionLanguages[0].text}

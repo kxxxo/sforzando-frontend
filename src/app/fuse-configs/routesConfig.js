@@ -6,8 +6,17 @@ import CompetitionConfig from 'app/main/competition/CompetitionConfig';
 import HomeConfig from 'app/main/home/HomeConfig';
 import GalleryConfig from '../main/gallery/GalleryConfig';
 import CompetitionResultsConfig from '../main/competition-results/CompetitionResultsConfig';
+import ApplicationConfig from '../main/components/competition-application/Competition-ApplicationConfig';
 
-const routeConfigs = [ErrorConfig, AboutConfig, CompetitionConfig, CompetitionResultsConfig, HomeConfig, GalleryConfig];
+const routeConfigs = [
+	ErrorConfig,
+	AboutConfig,
+	// CompetitionConfig,
+	CompetitionResultsConfig,
+	HomeConfig,
+	GalleryConfig,
+	ApplicationConfig
+];
 
 const routes = [
 	// if you want to make whole app auth protected by default change defaultAuth for example:

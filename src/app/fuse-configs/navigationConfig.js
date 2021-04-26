@@ -34,6 +34,7 @@ const navigationConfig = [
 		icon: 'leaderboard',
 		url: '/results'
 	},
+
 	{
 		id: 'gallery',
 		title: 'Gallery',
