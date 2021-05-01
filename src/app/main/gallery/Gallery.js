@@ -15,8 +15,7 @@ function GalleryPage() {
 	const [data, setData] = useState(null);
 
 	const openDir = ()=>{
-		axios.get(`${HttpConfig.yandexDiskGetDirectory}&path=${dir}`,{
-			headers: {'Authorization': `OAuth ${HttpConfig.yandexOauthKey}`},
+		axios.get(`${HttpConfig.getGalleryUrl}?path=${dir}`,{
 		}).then(res => {
 			setData(res.data);
 		});
@@ -43,9 +42,9 @@ function GalleryPage() {
 
 	return (
 		<div className="p-16">
-			<GalleryHeader onReset={galleryDirReset} data={data} />
-			<GalleryFolders onChange={galleryDirChange} data={data} />
-			<GalleryImages data={data} />
+			<GalleryHeader onReset={galleryDirReset} data={data.info} />
+			<GalleryFolders onChange={galleryDirChange} data={data.folders} />
+			<GalleryImages data={data.items} />
 		</div>
 	)
 }

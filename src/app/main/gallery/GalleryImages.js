@@ -1,5 +1,6 @@
 import React, { Component, useEffect, useState } from "react";
 import Gallery from 'react-grid-gallery';
+import HttpConfig from "../../config/HttpConfig";
 
 
 class GalleryImages extends Component{
@@ -19,10 +20,10 @@ class GalleryImages extends Component{
 	render() {
 		return (
 			<div className="p-12">
-				<Gallery images={this.props.data._embedded.items.filter(obj => obj.type === "file" && obj.media_type === "image").map(obj => {
+				<Gallery images={this.props.data.map(obj => {
 					return {
-						src: obj.file,
-						thumbnail: obj.preview,
+						src: HttpConfig.domain + obj.url,
+						thumbnail: HttpConfig.domain + obj.preview_url,
 					};
 				})} variants={this.item}/>
 			</div>

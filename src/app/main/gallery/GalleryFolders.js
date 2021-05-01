@@ -28,27 +28,25 @@ class GalleryFolders extends Component{
 	render() {
 		return (
 			<motion.div className="flex flex-wrap" variants={this.container} initial="hidden" animate="show">
-				{this.props.data._embedded.items.map(obj => {
-					if(obj.type === "dir")
-						return (
-							<motion.div variants={this.item} className="widget flex w-full sm:w-1/3 md:w-1/5 lg:w-1/6 p-6" key={obj.md5}>
-								<Card style={{ width:'100%' }}>
-									<CardActionArea>
-										<CardContent onClick={() => {this.handleChange(obj.path)}}>
-											<Icon style={{verticalAlign:"-5px"}}>folder</Icon>
-											&nbsp;
-											<span>
-												{obj.name}
-											</span>
-										</CardContent>
-									</CardActionArea>
-								</Card>
-							</motion.div>
-						)
-					return null;
+				{this.props.data.map(obj => {
+					return (
+						<motion.div variants={this.item} className="widget flex w-full sm:w-1/3 md:w-1/5 lg:w-1/6 p-6" key={obj.id}>
+							<Card style={{ width:'100%' }}>
+								<CardActionArea>
+									<CardContent onClick={() => {this.handleChange(obj.original_path)}}>
+										<Icon style={{verticalAlign:"-5px"}}>folder</Icon>
+										&nbsp;
+										<span>
+											{obj.name}
+										</span>
+									</CardContent>
+								</CardActionArea>
+							</Card>
+						</motion.div>
+
+					)
 				})}
 			</motion.div>
-
 		)
 	}
 }
