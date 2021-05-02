@@ -1,7 +1,7 @@
 import CompetitionApplication from './CompetitionApplication';
 import ListPage from '../../competition/List';
 import ApplyPage from '../../competition/Apply';
-import RequisitesPage from "../../competition/Requisites";
+import RequisitesPage from '../../competition/Requisites';
 
 const ApplicationConfig = {
 	settings: {

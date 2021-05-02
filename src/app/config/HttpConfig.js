@@ -9,7 +9,7 @@ export default class HttpConfig {
 
 	static getJudgesUrl = `${this.domain}/site/get-judges`;
 
-	static createApplicationUrl = `${this.domain}/site/create-application`
+	static createApplicationUrl = `${this.domain}/site/create-application`;
 
 	static getGalleryUrl = `${this.domain}/site/get-gallery`;
 }

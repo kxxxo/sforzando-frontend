@@ -7,9 +7,9 @@ import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
 import { darken } from '@material-ui/core/styles/colorManipulator';
 import Button from '@material-ui/core/Button';
-import Container from "@material-ui/core/Container";
+import Container from '@material-ui/core/Container';
 import queryString from 'query-string';
-import axios from "axios";
+import axios from 'axios';
 
 
 import {
@@ -24,7 +24,7 @@ import {
 } from '@material-ui/core';
 import validationsSchema from '../../../../validation-schemas';
 import './styles.css';
-import HttpConfig from "../../../config/HttpConfig";
+import HttpConfig from '../../../config/HttpConfig';
 
 function CompetitionApplication(props) {
 	const params = queryString.parse(props.location.search)
@@ -97,7 +97,7 @@ function CompetitionApplication(props) {
 				transition={{ bounceDamping: 0 }}
 			>
 				<Card className="mx-auto w-xl print:w-full print:shadow-none rounded-none sm:rounded-20">
-					<CardContent className="print:p-0" style={{paddingTop: "32px"}}>
+					<CardContent className="print:p-0" style={{ paddingTop: "32px" }}>
 						<div className={classes.container}>
 							<h1 className="second-page__title">Подать заявку на участие</h1>
 							<Formik
@@ -125,7 +125,6 @@ function CompetitionApplication(props) {
 									amountOfPatricipants: ''
 								}}
 								validateOnBlur
-
 								onSubmit={values => {
 									axios({
 										method: 'post',

@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import React, { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { selectFooterTheme } from 'app/store/fuse/settingsSlice';
-import Footer from "../../../main/components/Footer";
+import Footer from '../../../main/components/Footer';
 
 function FooterLayout4(props) {
 	const footerTheme = useSelector(selectFooterTheme);

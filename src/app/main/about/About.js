@@ -1,20 +1,14 @@
-import Icon from '@material-ui/core/Icon';
-import Input from '@material-ui/core/Input';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import clsx from "clsx";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { makeStyles } from '@material-ui/core/styles';
 import { darken } from '@material-ui/core/styles/colorManipulator';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -58,11 +52,8 @@ function AboutPage() {
 										Целями фонда являются развитие музыкальной культуры республики, популяризация классической музыки и поддержка талантливой молодежи, поиск новых молодых звезд классической сцены, помощь в реализации их таланта на мировой сцене и тем самым пропаганда академического музыкального искусства.
 									</Typography>
 								</div>
-
-
 							</div>
 						</div>
-
 						<div className="mb-32 print:mt-0">
 							<Table className="simple">
 								<TableBody>
@@ -225,7 +216,6 @@ function AboutPage() {
 									К/с: 30101810900000000767
 								</Typography>
 							</div>
-
 						</div>
 
 

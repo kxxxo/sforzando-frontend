@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 
 function RequisitesPage() {
 	return (
-		<div className="flex flex-col flex-1 items-center justify-center" style={{padding:'60px'}}>
+		<div className="flex flex-col flex-1 items-center justify-center" style={{ padding: '60px' }}>
 			<div className="max-w-512 text-center">
 				<motion.div
 					initial={{ opacity: 0, scale: 0.6 }}
@@ -19,8 +19,9 @@ function RequisitesPage() {
 				<motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.2 } }}>
 					<Typography variant="h5" color="textSecondary" className="mb-16 font-normal">
 						Спасибо за участие.
-						<br/>
-						Оплатить участие в конкурсе можно по реквизитам: XXXX-XXXX-XXXX-XXXX<br/>
+						<br />
+						Оплатить участие в конкурсе можно по реквизитам: XXXX-XXXX-XXXX-XXXX
+						<br />
 					</Typography>
 				</motion.div>
 

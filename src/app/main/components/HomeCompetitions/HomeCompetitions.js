@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import { motion } from 'framer-motion';
 import axios from 'axios';
-import CompetitionCard from "./CompetitionCard";
-import HttpConfig from "../../../config/HttpConfig";
-
-
+import CompetitionCard from './CompetitionCard';
+import HttpConfig from '../../../config/HttpConfig';
 
 function HomeCompetitions() {
 	const [data, setData] = useState(null);
@@ -52,12 +50,11 @@ function HomeCompetitions() {
 					</motion.div>
 					))}
 				</motion.div>
-				<div style={{ textAlign: 'center', width: '100%', paddingTop: '30px'}} >
+				<div style={{ textAlign: 'center', width: '100%', paddingTop: '30px' }} >
 					<Button variant="contained" color="primary" href="/competition" role="button">
 						ВСЕ КОНКУРСЫ
 					</Button>
 				</div>
-
 			</Container>
 		</div>
 	);

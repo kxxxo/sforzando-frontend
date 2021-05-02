@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import Container from "@material-ui/core/Container";
-import axios from "axios";
-import CompetitionCard from "./CompetitionCard";
-import HttpConfig from "../../config/HttpConfig";
+import React, { useEffect, useState } from 'react';
+import Container from '@material-ui/core/Container';
+import axios from 'axios';
+import CompetitionCard from './CompetitionCard';
+import HttpConfig from '../../config/HttpConfig';
 
 function ListPage() {
 	const [data, setData] = useState(null);
@@ -17,21 +17,19 @@ function ListPage() {
 		return null;
 	}
 
-
-
 	return (
 		<div className="flex flex-col flex-1 items-center justify-center p-16">
 			<Container fixed>
 				{data.map(competition => (
 					<CompetitionCard
-						key = {competition.id}
-						id = {competition.id}
+						key={competition.id}
+						id={competition.id}
 						image={HttpConfig.domain + competition.img_url}
 					 	title={competition.competitionLanguages[0].title}
 						text={competition.competitionLanguages[0].text}
-						start_date = {competition.start_date }
-						is_ended = {competition.is_ended}
-						result_url = {competition.result_url}
+						start_date={competition.start_date}
+						is_ended={competition.is_ended}
+						result_url={competition.result_url}
 					/>
 				))}
 			</Container>

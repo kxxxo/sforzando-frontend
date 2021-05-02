@@ -1,14 +1,14 @@
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card";
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import Card from '@material-ui/core/Card';
 import { motion } from 'framer-motion';
 
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import Container from "@material-ui/core/Container";
-import HttpConfig from "../../config/HttpConfig";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import Container from '@material-ui/core/Container';
+import HttpConfig from '../../config/HttpConfig';
 
 function JudgesPage() {
 	const [data, setData] = useState(null);
@@ -30,12 +30,12 @@ function JudgesPage() {
 		}
 	}
 	const item = {
-		hidden: {opacity: 0, y: 20},
-		show: {opacity: 1, y: 0}
-	}
-	const rawText = (txt)=> {
-		return {__html: txt};
-	}
+		hidden: { opacity: 0, y: 20 },
+		show: { opacity: 1, y: 0 }
+	};
+	const rawText = txt=> {
+		return { __html: txt };
+	};
 	return (
 		<div className="flex flex-col flex-1 items-center justify-center p-16">
 			<Container fixed>
@@ -49,12 +49,10 @@ function JudgesPage() {
 								</motion.div>
 								<motion.div variants={item} className="widget flex w-full sm:w-1/2 md:w-2/3 p-36">
 									<Typography component="p" className="mb-16">
-
 										<Typography variant="h5" color="primary" component="p">
 											{judge.judgeLanguages[0].fio}
 										</Typography>
 										<br/>
-
 										<div dangerouslySetInnerHTML={rawText(judge.judgeLanguages[0].description)} />
 									</Typography>
 								</motion.div>
