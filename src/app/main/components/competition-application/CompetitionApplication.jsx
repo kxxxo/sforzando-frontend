@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import { Formik, Field, ErrorMessage } from 'formik';
@@ -25,10 +25,12 @@ import {
 import validationsSchema from '../../../../validation-schemas';
 import './styles.css';
 import HttpConfig from '../../../config/HttpConfig';
+import Icon from "@material-ui/core/Icon";
+import Typography from "@material-ui/core/Typography";
 
 function CompetitionApplication(props) {
 	const params = queryString.parse(props.location.search)
-
+	const [data, setData] = useState(null);
 	const useStyles = makeStyles(theme => ({
 		root: {
 			background: `radial-gradient(${darken(theme.palette.primary.dark, 0.5)} 0%, ${
@@ -74,21 +76,18 @@ function CompetitionApplication(props) {
 			}
 		}
 	}));
-
-	const currencies = [
-		{
-			value: 'full-time',
-			label: 'Очное'
-		},
-		{
-			value: 'part-time',
-			label: 'Заочное'
-		}
-	];
-
 	const classes = useStyles();
 
+	useEffect(() => {
+		axios.get(HttpConfig.getApplicationFormUrl+`?id=${params.id}`).then(res => {
+			setData(res.data);
+		});
+	}, []);
 
+
+	if (!data) {
+		return null;
+	}
 	return (
 		<div className={clsx(classes.root, 'flex-grow flex-shrink-0 p-0 sm:p-64 print:p-0 overflow-auto')}>
 			<motion.div
@@ -98,12 +97,20 @@ function CompetitionApplication(props) {
 			>
 				<Card className="mx-auto w-xl print:w-full print:shadow-none rounded-none sm:rounded-20">
 					<CardContent className="print:p-0" style={{ paddingTop: "32px" }}>
+						<div>
+							<Button onClick={() => { window.location = "/competition" }} >
+								<Icon>arrow_back</Icon>
+							</Button>
+						</div>
 						<div className={classes.container}>
-							<h1 className="second-page__title">Подать заявку на участие</h1>
-							<Formik
+							<h1 className="second-page__title">{data.competition.title}</h1>
+							<h2 className="second-page__subtitle">Дата проведения: {data.competition.start_date}</h2>
+							<br/>
+								<Formik
 								initialValues={{
 									picked: '',
 									name: '',
+									content_url: '',
 									nomination: '',
 									nameOfSchool: '',
 									country: '',
@@ -119,13 +126,16 @@ function CompetitionApplication(props) {
 									parents: '',
 									parentsPhone: '',
 									parentsMail: '',
+									contactMail: '',
 									comment: '',
-									fullAge: '',
-									employment: '',
-									amountOfPatricipants: ''
+									requisite: '',
+									ageGroup: '',
+									performance_type: '',
+									amountOfPatricipants: 1
 								}}
 								validateOnBlur
 								onSubmit={values => {
+									debugger;
 									axios({
 										method: 'post',
 										url: HttpConfig.createApplicationUrl,
@@ -141,15 +151,8 @@ function CompetitionApplication(props) {
 										alert("Возникла ошибка. Попробуйте отправить заявку еще раз")
 									});
 								}}
-								validateOnChange={e=>{
-								}}
 
 								validationSchema={validationsSchema}
-
-								// onSubmit={async values => {
-								// 	await new Promise(r => setTimeout(r, 500));
-								// 	alert(JSON.stringify(values, null, 2));
-								// }}
 							>
 								{({
 									  values,
@@ -164,15 +167,17 @@ function CompetitionApplication(props) {
 									//Форма общая
 
 									<Container fixed style={{maxWidth:'670px'}}>
+										{ /* Вид выступления */}
+										{ /* Участников */ }
 										<div className="row">
 											<TextField
 												margin="normal"
 												helperText="Вид выступления"
 												select
-												name="employment"
+												name="performance_type"
 												onBlur={handleBlur}
 												onChange={handleChange}
-												value={values.employment}
+												value={values.performance_type}
 												className="input"
 												inputProps={{
 													style:{
@@ -180,19 +185,20 @@ function CompetitionApplication(props) {
 													}
 												}}
 											>
-												{currencies.map(option => (
-													<MenuItem key={option.value} value={option.value}>
-														{option.label}
+												{data.performance_types.map(option => (
+													<MenuItem key={option.id} value={option.id}>
+														{option.name}
 													</MenuItem>
 												))}
 											</TextField>
-											<ErrorMessage name="employment" component="p" className="error" />
+											<ErrorMessage name="performance_type" component="p" className="error" />
 
 											<TextField
 												margin="normal"
 												className="input"
 												helperText="Участников"
 												type="number"
+												InputProps={{ inputProps: { min: 1, max: 999 } }}
 												name="amountOfPatricipants"
 												onBlur={handleBlur}
 												onChange={handleChange}
@@ -205,24 +211,55 @@ function CompetitionApplication(props) {
 											/>
 
 										</div>
-										{/*Номинация/ Направление*/}
+
+										{ /* Ссылка на видео вашего выступления */}
+										{values.performance_type === 2 && (
+											<div className={classes.fio}>
+												<TextField
+													id="filled-basic"
+													size="medium"
+													margin="normal"
+													placeholder="Ссылка на видео вашего выступления"
+													className="input"
+													type="text"
+													name="content_url"
+													onBlur={handleBlur}
+													onChange={handleChange}
+													value={values.content_url}
+												/>
+
+												<ErrorMessage name="content_url" component="p" className="error"/>
+											</div>
+										)}
+
+										{ /* Номинация/ Направление*/}
 										<div className={classes.fio}>
 											<TextField
-												id="filled-basic"
+												name="nomination"
 												size="medium"
 												margin="normal"
-												placeholder="Номинация - направление (С уточнением номинации!)"
-												className="input"
-												type="text"
-												name="nomination"
+												helperText="Номинация - направление"
+												select
 												onBlur={handleBlur}
 												onChange={handleChange}
 												value={values.nomination}
-											/>
+												className="input"
+												inputProps={{
+													style:{
+														backgroundColor:"#ff000"
+													}
+												}}
+											>
+												{data.nominations.map(option => (
+													<MenuItem key={option.id} value={option.id}>
+														{option.name}
+													</MenuItem>
+												))}
+											</TextField>
 
 											<ErrorMessage name="nomination" component="p" className="error" />
 										</div>
-										{/* Форма ФИО */}
+										{ /* Форма ФИО */}
 										<div className={classes.fio}>
 											<TextField
 												id="filled-basic"
@@ -239,24 +276,31 @@ function CompetitionApplication(props) {
 
 											<ErrorMessage name="name" component="p" className="error" />
 										</div>
+										{ /* Возрастная группа */}
+										{ /* ОВЗ */}
 										<div className="row">
-											{/* Форма даты рождения */}
 											<div className="second-page__dateOfBirth">
 												<TextField
 													size="medium"
 													margin="normal"
-													placeholder="Возрастная группа и сколько полных лет"
+													helperText="Возрастная группа"
 													className="input"
 													type="text"
-													name="fullAge"
+													select
+													name="ageGroup"
 													onBlur={handleBlur}
 													onChange={handleChange}
-													value={values.fullAge}
-												/>
+													value={values.ageGroup}
+												>
+													{data.age_groups.map(option => (
+														<MenuItem key={option.id} value={option.id}>
+															{option.name}
+														</MenuItem>
+													))}
+												</TextField>
 
-												<ErrorMessage name="fullAge" component="p" className="error" />
+												<ErrorMessage name="ageGroup" component="p" className="error" />
 											</div>
-											{/*  ОВЗ */}
 											<div className="second-page__ovz">
 												<FormControl >
 													<RadioGroup
@@ -314,6 +358,7 @@ function CompetitionApplication(props) {
 												</FormControl>
 											</div>
 										</div>
+
 										{/* Форма образовательного учреждения */}
 										<div className="second-page__nameOfSchool">
 											<TextField
@@ -389,6 +434,7 @@ function CompetitionApplication(props) {
 											<ErrorMessage name="formOfPerfomance" component="p" className="error" />
 										</div>
 
+										{/*  Преподаватель */}
 										<h2 className="second-page__title">Преподаватель</h2>
 										<div className="second-page__teacher">
 											<TextField
@@ -396,7 +442,7 @@ function CompetitionApplication(props) {
 												size="medium"
 												margin="normal"
 												rows="3"
-												placeholder=" Преподаватель"
+												placeholder="Преподаватель"
 												className="height-input"
 												type="text"
 												name="teacher"
@@ -408,8 +454,9 @@ function CompetitionApplication(props) {
 											<ErrorMessage name="teacher" component="p" className="error" />
 										</div>
 
+										{/*Телефон преподавателя*/}
+										{/*Email преподавателя*/}
 										<div className="row">
-											{/*Телефон преподавателя*/}
 											<TextField
 												className="input"
 												size="medium"
@@ -421,7 +468,6 @@ function CompetitionApplication(props) {
 												placeholder="Телефон"
 											/>
 											<ErrorMessage name="teacherPhone" component="p" className="error" />
-											{/*Email преподавателя*/}
 											<TextField
 												className="input"
 												size="medium"
@@ -435,6 +481,8 @@ function CompetitionApplication(props) {
 
 											<ErrorMessage name="teacherMail" component="span" className="error" />
 										</div>
+
+										{/*  Концертмейстер */}
 										<h2 className="second-page__title">Концертмейстер</h2>
 										<div className="second-page__teacher">
 											<TextField
@@ -452,8 +500,9 @@ function CompetitionApplication(props) {
 											/>
 										</div>
 
+										{/*Телефон преподавателя*/}
+										{/*Email преподавателя*/}
 										<div className="row">
-											{/*Телефон преподавателя*/}
 											<TextField
 												className="input"
 												size="medium"
@@ -464,8 +513,6 @@ function CompetitionApplication(props) {
 												name="concertMaesterPhone"
 												placeholder="Телефон"
 											/>
-
-											{/*Email преподавателя*/}
 											<TextField
 												className="input"
 												size="medium"
@@ -477,7 +524,9 @@ function CompetitionApplication(props) {
 												placeholder="Email"
 											/>
 										</div>
+
 										<h2 className="second-page__title">Родитель</h2>
+										{/*  Родитель */}
 										<div className="second-page__teacher">
 											<TextField
 												id="filled-basic"
@@ -494,8 +543,9 @@ function CompetitionApplication(props) {
 											/>
 										</div>
 
+										{/*Телефон преподавателя*/}
+										{/*Email преподавателя*/}
 										<div className="row">
-											{/*Телефон преподавателя*/}
 											<TextField
 												className="input"
 												size="medium"
@@ -506,7 +556,6 @@ function CompetitionApplication(props) {
 												name="parentsPhone"
 												placeholder="Телефон"
 											/>
-											{/*Email преподавателя*/}
 											<TextField
 												className="input"
 												size="medium"
@@ -519,6 +568,38 @@ function CompetitionApplication(props) {
 											/>
 										</div>
 
+										<h2 className="second-page__title">Дополнительная информация</h2>
+										{/*  Ваш email */}
+										<div className="row">
+											<TextField
+												className="height-input"
+												size="medium"
+												type="text"
+												value={values.contactMail}
+												onChange={handleChange}
+												onBlur={handleBlur}
+												name="contactMail"
+												placeholder="Ваш email"
+											/>
+										</div>
+										{/*  Необходимый реквизит и оборудование */}
+										<div className="row">
+											<TextField
+												id="filled-basic"
+												size="medium"
+												margin="normal"
+												placeholder="Необходимый реквизит и оборудование (Микрофоны, стойки, прочее)"
+												className="input"
+												type="text"
+												name="requisite"
+												onBlur={handleBlur}
+												onChange={handleChange}
+												multiline
+												rows={3}
+												value={values.requisite}
+											/>
+										</div>
+
 										{/*  Комментарий */}
 										<div className="second-page__comment">
 											<TextField
@@ -526,13 +607,13 @@ function CompetitionApplication(props) {
 												size="medium"
 												margin="normal"
 												placeholder="Комментарий"
-												className="height-input"
+												className="input"
 												type="text"
 												name="comment"
 												onBlur={handleBlur}
 												onChange={handleChange}
 												multiline
-												rows={4}
+												rows={3}
 												value={values.comment}
 											/>
 										</div>

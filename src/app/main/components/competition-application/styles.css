@@ -60,7 +60,7 @@
 	border-radius: 4px;
 	padding: 4px 6px;
 	box-sizing: border-box;
-	margin-top: 20px;
+	margin-top: 10px;
 	width: 100%;
 }
 
@@ -83,7 +83,7 @@
 }
 
 .second-page__title {
-	margin: 20px auto;
+	margin: 0 0 0 0;
 }
 .second-page__teacher,
 .second-page__comment {
@@ -121,10 +121,16 @@ textarea {
 	.second-page__title {
 		font-size: 1.5em;
 	}
+	.second-page__subtitle {
+		font-size: 1.2em;
+	}
 }
 @media screen and (max-width: 320px) {
 	.second-page__title {
 		font-size: 1.2em;
+	}
+	.second-page__subtitle {
+		font-size: 1em;
 	}
 	.button-send-container {
 		justify-content: center;

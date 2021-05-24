@@ -1,5 +1,5 @@
 export default class HttpConfig {
-	static domain = 'http://localhost:82';
+	static domain = process.env.DOMAIN;
 
 	static getLast3CompetitionUrl = `${this.domain}/site/get-competitions?page=1&count=3`;
 
@@ -9,7 +9,10 @@ export default class HttpConfig {
 
 	static getJudgesUrl = `${this.domain}/site/get-judges`;
 
-	static createApplicationUrl = `${this.domain}/site/create-application`;
-
 	static getGalleryUrl = `${this.domain}/site/get-gallery`;
+
+	static createApplicationUrl = `${this.domain}/application/create`;
+
+	static getApplicationFormUrl = `${this.domain}/application/get-form`;
+
 }
