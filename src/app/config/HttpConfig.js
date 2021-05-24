@@ -1,5 +1,5 @@
 export default class HttpConfig {
-	static domain = process.env.DOMAIN;
+	static domain = 'http://api.sforzando-fund.com';
 
 	static getLast3CompetitionUrl = `${this.domain}/site/get-competitions?page=1&count=3`;
 
