@@ -22,11 +22,12 @@ import {
 	FormGroup,
 	MenuItem
 } from '@material-ui/core';
+import Icon from "@material-ui/core/Icon";
+import Typography from "@material-ui/core/Typography";
+
 import validationsSchema from '../../../../validation-schemas';
 import './styles.css';
 import HttpConfig from '../../../config/HttpConfig';
-import Icon from "@material-ui/core/Icon";
-import Typography from "@material-ui/core/Typography";
 
 function CompetitionApplication(props) {
 	const params = queryString.parse(props.location.search)
@@ -79,7 +80,7 @@ function CompetitionApplication(props) {
 	const classes = useStyles();
 
 	useEffect(() => {
-		axios.get(HttpConfig.getApplicationFormUrl+`?id=${params.id}`).then(res => {
+		axios.get(`${HttpConfig.getApplicationFormUrl}?id=${params.id}`).then(res => {
 			setData(res.data);
 		});
 	}, []);
@@ -135,7 +136,6 @@ function CompetitionApplication(props) {
 								}}
 								validateOnBlur
 								onSubmit={values => {
-									debugger;
 									axios({
 										method: 'post',
 										url: HttpConfig.createApplicationUrl,
