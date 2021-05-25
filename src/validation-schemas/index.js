@@ -25,7 +25,9 @@ const validationsSchema = yup.object().shape({
 	content_url: yup.string().when('performance_type',{
 		is:2,
 		then: yup.string().required('Обязательно')
-	})
+	}),
+	checkbox_personal_data: yup.boolean().oneOf([true], 'Обязательно'),
+	checkbox_share_video: yup.boolean().oneOf([true], 'Обязательно'),
 
 });
 

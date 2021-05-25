@@ -29,6 +29,7 @@ function ResultsPage() {
 						start_date={competition.start_date}
 						is_ended={competition.is_ended}
 						result_url={competition.result_url}
+						rules_file_url={competition.rules_file_url}
 					/>
 				))}
 			</Container>

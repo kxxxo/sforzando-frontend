@@ -59,17 +59,17 @@ class CompetitionCard extends Component {
 					</motion.div>
 				</CardContent>
 				<CardActions disableSpacing className="px-16 pb-16">
+					{this.props.rules_file_url &&
+						<Button variant="contained" color="default" size="large" style={{margin: "auto"}}
+								href={HttpConfig.domain + this.props.rules_file_url} role="button">
+							Положение конкурса
+						</Button>
+					}
 					{!this.props.is_ended &&
-						<>
-							<Button variant="contained" color="default" size="large" style={{margin: "auto"}}
-									href={url} role="button">
-								Положение конкурса
-							</Button>
-							<Button variant="contained" color="primary" size="large" style={{margin: "auto"}}
-									href={url} role="button">
-								Участвовать
-							</Button>
-						</>
+						<Button variant="contained" color="primary" size="large" style={{margin: "auto"}}
+								href={url} role="button">
+							Участвовать
+						</Button>
 					}
 					{this.props.is_ended && this.props.result_url &&
 					<Button variant="contained" color="primary" size="large" style={{margin: "auto"}}

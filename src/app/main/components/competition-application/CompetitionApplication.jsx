@@ -129,6 +129,8 @@ function CompetitionApplication(props) {
 									parentsMail: '',
 									contactMail: '',
 									comment: '',
+									checkbox_personal_data: false,
+									checkbox_share_video: false,
 									requisite: '',
 									ageGroup: '',
 									performance_type: '',
@@ -166,7 +168,7 @@ function CompetitionApplication(props) {
 								  }) => (
 									//Форма общая
 
-									<Container fixed style={{maxWidth:'670px'}}>
+									<Container fixed style={{maxWidth:'795px'}}>
 										{ /* Вид выступления */}
 										{ /* Участников */ }
 										<div className="row">
@@ -616,6 +618,57 @@ function CompetitionApplication(props) {
 												rows={3}
 												value={values.comment}
 											/>
+										</div>
+
+										<div>
+											Согласие на обработку персональных данных
+											<br/>
+											<div style={{
+												color: "#00000085",
+												fontSize: "11px"
+											}}>
+												Подавая заявку, я даю своё добровольное согласие на обработку персональных данных в соответствии с действующим законодательством, а также беру на себя всю ответственность за предоставление персональных данных несовершеннолетних, от лиц которых подается заявка
+											</div>
+											<br/>
+											<FormControlLabel
+												control={<Checkbox
+													size="medium"
+													margin="normal"
+													name="checkbox_personal_data"
+													onBlur={handleBlur}
+													onChange={handleChange}
+													value={values.checkbox_personal_data}
+												/>}
+												name="checkbox_personal_data"
+												label="Согласен на обработку персональных данных"
+											/>
+											<ErrorMessage name="checkbox_personal_data" component="p" className="error" />
+
+											<br/>
+											<br/>
+
+											Согласие на публикацию предоставленной видеозаписи в соцсети "Вконтакте" после проведения конкурса
+											<br/>
+											<div style={{
+												color: "#00000085",
+												fontSize: "11px"
+											}}>
+											По итогам конкурса мы публикуем выступления Лауреатов конкурса в нашей группе вКонтакте, проводя таким образом онлайн- Гала-концерт.
+											</div>
+											<br/>
+											<FormControlLabel
+												control={<Checkbox
+													size="medium"
+													margin="normal"
+													name="checkbox_share_video"
+													onBlur={handleBlur}
+													onChange={handleChange}
+													value={values.checkbox_share_video}
+												/>}
+												name="checkbox_share_video"
+												label="Согласен"
+											/>
+											<ErrorMessage name="checkbox_share_video" component="p" className="error" />
 										</div>
 
 										<div className="button-send-container" style={{textAlign:'center'}}>
