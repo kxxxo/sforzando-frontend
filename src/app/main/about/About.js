@@ -1,3 +1,4 @@
+import {useTranslation} from 'react-i18next';
 import Typography from '@material-ui/core/Typography';
 import { motion } from 'framer-motion';
 import clsx from "clsx";
@@ -9,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { darken } from '@material-ui/core/styles/colorManipulator';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import React from "react";
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -20,6 +22,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function AboutPage() {
+	const {t} = useTranslation('mainApp');
+
 	const classes = useStyles();
 
 	return (
@@ -43,21 +47,15 @@ function AboutPage() {
 									<div className={clsx(classes.divider, 'mx-48 w-px h-128 print:mx-16')} />
 
 									<Typography color="textSecondary">
-										Региональный Общественный Благотворительный фонд развития исполнительского искусства РТ «Sforzando» («Усилие»).
+										{t('SFORZANDO_ABOUT_1')}
 										<br/><br/>
-										Обладатель Гранта Президента Российской Федерации.
+										{t('SFORZANDO_ABOUT_2')}
 										<br/><br/>
-										Был создан в 2014 году для реализации благотворительных проектов.
+										{t('SFORZANDO_ABOUT_3')}
 										<br/><br/>
-										Основателем фонда является Соколов Данияр Мнирович – Музыкант, пианист, лауреат
-										Международных конкурсов, общественный деятель, директор Фонда Развития Исполнительского Искусства РТ «SFORZANDO»,
-										музыкальный руководитель и главный дирижёр Оркестра Татарского государственного академического театра им. Г. Камала.
+										{t('SFORZANDO_ABOUT_4')}
 										<br/><br/>
-										Целями фонда являются развитие музыкальной культуры республики, популяризация классической музыки и поддержка талантливой молодежи,
-										поиск новых молодых звезд классической сцены, помощь в реализации их таланта на мировой сцене и тем самым пропаганда
-										академического музыкального искусства.
-										<br/><br/>
-										Региональный Общественный Благотворительный фонд развития исполнительского искусства РТ «Sforzando» («Усилие»).
+										{t('SFORZANDO_ABOUT_5')}
 									</Typography>
 								</div>
 							</div>
@@ -72,7 +70,7 @@ function AboutPage() {
 												variant="subtitle1"
 												color="textSecondary"
 											>
-												Наименование организации
+											{t('ORGANIZAION_NAME')}
 											</Typography>
 										</TableCell>
 										<TableCell align="right">
@@ -81,7 +79,7 @@ function AboutPage() {
 												variant="subtitle1"
 												color="textSecondary"
 											>
-												РБОФ «Сфорцандо»
+												{t('SFORZANDO_FULL')}
 											</Typography>
 										</TableCell>
 									</TableRow>
@@ -92,7 +90,7 @@ function AboutPage() {
 												variant="subtitle1"
 												color="textSecondary"
 											>
-												ИНН
+												{t('INN')}
 											</Typography>
 										</TableCell>
 										<TableCell align="right">
@@ -114,7 +112,7 @@ function AboutPage() {
 												variant="subtitle1"
 												color="textSecondary"
 											>
-												КПП
+												{t('КПП')}
 											</Typography>
 										</TableCell>
 										<TableCell align="right">
@@ -135,7 +133,7 @@ function AboutPage() {
 												variant="subtitle1"
 												color="textSecondary"
 											>
-												ОКПО
+												{t('ОКПО')}
 											</Typography>
 										</TableCell>
 										<TableCell align="right">
@@ -156,7 +154,7 @@ function AboutPage() {
 												variant="subtitle1"
 												color="textSecondary"
 											>
-												ОКАТО
+												{t('ОКАТО')}
 											</Typography>
 										</TableCell>
 										<TableCell align="right">
@@ -177,7 +175,7 @@ function AboutPage() {
 												variant="subtitle1"
 												color="textSecondary"
 											>
-												ОГРН
+												{t('OGRN')}
 											</Typography>
 										</TableCell>
 										<TableCell align="right">

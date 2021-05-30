@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import queryString from 'query-string';
 import axios from 'axios';
-
+import i18next from "i18next";
 
 import {
 	TextField,
@@ -28,8 +28,10 @@ import Typography from "@material-ui/core/Typography";
 import validationsSchema from '../../../../validation-schemas';
 import './styles.css';
 import HttpConfig from '../../../config/HttpConfig';
+import { useTranslation } from "react-i18next";
 
 function CompetitionApplication(props) {
+	const {t} = useTranslation('mainApp');
 	const params = queryString.parse(props.location.search)
 	const [data, setData] = useState(null);
 	const useStyles = makeStyles(theme => ({
@@ -80,7 +82,7 @@ function CompetitionApplication(props) {
 	const classes = useStyles();
 
 	useEffect(() => {
-		axios.get(`${HttpConfig.getApplicationFormUrl}?id=${params.id}`).then(res => {
+		axios.get(`${HttpConfig.getApplicationFormUrl}?id=${params.id}&lang=${i18next.language}`).then(res => {
 			setData(res.data);
 		});
 	}, []);
@@ -105,7 +107,9 @@ function CompetitionApplication(props) {
 						</div>
 						<div className={classes.container}>
 							<h1 className="second-page__title">{data.competition.title}</h1>
-							<h2 className="second-page__subtitle">Дата проведения: {data.competition.start_date}</h2>
+							<h2 className="second-page__subtitle">
+								{t('COMPETITION_START_DATE')}: {data.competition.start_date}
+							</h2>
 							<br/>
 								<Formik
 								initialValues={{
@@ -150,7 +154,7 @@ function CompetitionApplication(props) {
 										window.location = "/competition/requisites"
 									}, (error) => {
 										console.log(error);
-										alert("Возникла ошибка. Попробуйте отправить заявку еще раз")
+										alert(t('COMPETITION_START_DATE'))
 									});
 								}}
 
@@ -174,7 +178,7 @@ function CompetitionApplication(props) {
 										<div className="row">
 											<TextField
 												margin="normal"
-												helperText="Вид выступления"
+												helperText={t('PERFORMANCE_TYPE')}
 												select
 												name="performance_type"
 												onBlur={handleBlur}
@@ -198,7 +202,7 @@ function CompetitionApplication(props) {
 											<TextField
 												margin="normal"
 												className="input"
-												helperText="Участников"
+												helperText={t('AMOUNT_OF_PARTICIPANTS')}
 												type="number"
 												InputProps={{ inputProps: { min: 1, max: 999 } }}
 												name="amountOfPatricipants"
@@ -221,7 +225,7 @@ function CompetitionApplication(props) {
 													id="filled-basic"
 													size="medium"
 													margin="normal"
-													placeholder="Ссылка на видео вашего выступления"
+													placeholder={t('CONTENT_URL')}
 													className="input"
 													type="text"
 													name="content_url"
@@ -240,7 +244,7 @@ function CompetitionApplication(props) {
 												name="nomination"
 												size="medium"
 												margin="normal"
-												helperText="Номинация - направление"
+												helperText={t('NOMINATION')}
 												select
 												onBlur={handleBlur}
 												onChange={handleChange}
@@ -267,7 +271,7 @@ function CompetitionApplication(props) {
 												id="filled-basic"
 												size="medium"
 												margin="normal"
-												placeholder="ФИО исполнителя/ Название коллектива (по данной информации будет заполняться диплом)"
+												placeholder={t('NAME')}
 												className="input"
 												type="text"
 												name="name"
@@ -285,7 +289,7 @@ function CompetitionApplication(props) {
 												<TextField
 													size="medium"
 													margin="normal"
-													helperText="Возрастная группа"
+													helperText={t('AGE_GROUP')}
 													className="input"
 													type="text"
 													select
@@ -319,8 +323,8 @@ function CompetitionApplication(props) {
 																color="primary"
 															/>}
 															name="picked"
-															value="ОВЗ"
-															label="ОВЗ"
+															value={t('OVZ')}
+															label={t('OVZ')}
 														/>
 														<FormControlLabel
 															control={
@@ -331,8 +335,8 @@ function CompetitionApplication(props) {
 																/>
 															}
 															name="picked"
-															value="Нет льгот"
-															label="Нет льгот"
+															value={t('NO_BENEFITS')}
+															label={t('NO_BENEFITS')}
 														/>
 														<FormControlLabel
 															control={
@@ -343,8 +347,8 @@ function CompetitionApplication(props) {
 																/>
 															}
 															name="picked"
-															value="Многодетная семья"
-															label="Многодетная семья"
+															value={t('LARGE_FAMILY')}
+															label={t('LARGE_FAMILY')}
 														/>
 														<FormControlLabel
 															control={<Radio
@@ -353,8 +357,8 @@ function CompetitionApplication(props) {
 																color="primary"
 															/>}
 															name="picked"
-															value="Сирота"
-															label="Сирота"
+															value={t('ORPHAN')}
+															label={t('ORPHAN')}
 														/>
 													</RadioGroup>
 												</FormControl>
@@ -367,7 +371,7 @@ function CompetitionApplication(props) {
 												id="filled-basic"
 												size="medium"
 												margin="normal"
-												placeholder="Образовательное учреждение (Писать полностью!)"
+												placeholder={t('NAME_OF_SCHOOL')}
 												className="input"
 												type="text"
 												name="nameOfSchool"
@@ -385,7 +389,7 @@ function CompetitionApplication(props) {
 													id="filled-basic"
 													size="medium"
 													margin="normal"
-													placeholder="Город"
+													placeholder={t('CITY')}
 													className="input"
 													type="text"
 													name="country"
@@ -403,7 +407,7 @@ function CompetitionApplication(props) {
 													id="filled-basic"
 													size="medium"
 													margin="normal"
-													placeholder="Телефон для связи"
+													placeholder={t('CONTACT_PHONE')}
 													className="input"
 													type="text"
 													name="phone"
@@ -422,7 +426,7 @@ function CompetitionApplication(props) {
 												id="filled-basic"
 												size="medium"
 												margin="normal"
-												placeholder="Программа выступления с указанием инициалов авторов произведений,точного хронометража"
+												placeholder={t('FORM_OF_PERFORMANCE')}
 												className="input"
 												type="text"
 												name="formOfPerfomance"
@@ -437,14 +441,14 @@ function CompetitionApplication(props) {
 										</div>
 
 										{/*  Преподаватель */}
-										<h2 className="second-page__title">Преподаватель</h2>
+										<h2 className="second-page__title">{t('TEACHER')}</h2>
 										<div className="second-page__teacher">
 											<TextField
 												id="filled-basic"
 												size="medium"
 												margin="normal"
 												rows="3"
-												placeholder="Преподаватель"
+												placeholder={t('TEACHER')}
 												className="height-input"
 												type="text"
 												name="teacher"
@@ -467,7 +471,7 @@ function CompetitionApplication(props) {
 												onBlur={handleBlur}
 												onChange={handleChange}
 												name="teacherPhone"
-												placeholder="Телефон"
+												placeholder={t('TELEPHONE')}
 											/>
 											<ErrorMessage name="teacherPhone" component="p" className="error" />
 											<TextField
@@ -485,14 +489,14 @@ function CompetitionApplication(props) {
 										</div>
 
 										{/*  Концертмейстер */}
-										<h2 className="second-page__title">Концертмейстер</h2>
+										<h2 className="second-page__title">{t('CONCERTMASTER')}</h2>
 										<div className="second-page__teacher">
 											<TextField
 												id="filled-basic"
 												size="medium"
 												margin="normal"
 												rows="3"
-												placeholder="Концертмейстер (если есть)"
+												placeholder={t('CONCERTMASTER')}
 												className="height-input"
 												type="text"
 												name="concertMaester"
@@ -513,7 +517,7 @@ function CompetitionApplication(props) {
 												onBlur={handleBlur}
 												onChange={handleChange}
 												name="concertMaesterPhone"
-												placeholder="Телефон"
+												placeholder={t('TELEPHONE')}
 											/>
 											<TextField
 												className="input"
@@ -527,7 +531,7 @@ function CompetitionApplication(props) {
 											/>
 										</div>
 
-										<h2 className="second-page__title">Родитель</h2>
+										<h2 className="second-page__title">{t('PARENT')}</h2>
 										{/*  Родитель */}
 										<div className="second-page__teacher">
 											<TextField
@@ -535,7 +539,7 @@ function CompetitionApplication(props) {
 												size="medium"
 												margin="normal"
 												rows="3"
-												placeholder="Родитель (Если есть)"
+												placeholder={t('PARENT')}
 												className="height-input"
 												type="text"
 												name="parents"
@@ -556,7 +560,7 @@ function CompetitionApplication(props) {
 												onBlur={handleBlur}
 												onChange={handleChange}
 												name="parentsPhone"
-												placeholder="Телефон"
+												placeholder={t('TELEPHONE')}
 											/>
 											<TextField
 												className="input"
@@ -570,7 +574,7 @@ function CompetitionApplication(props) {
 											/>
 										</div>
 
-										<h2 className="second-page__title">Дополнительная информация</h2>
+										<h2 className="second-page__title">{t('ADDITIONAL_INFORMATION')}</h2>
 										{/*  Ваш email */}
 										<div className="row">
 											<TextField
@@ -581,7 +585,7 @@ function CompetitionApplication(props) {
 												onChange={handleChange}
 												onBlur={handleBlur}
 												name="contactMail"
-												placeholder="Ваш email"
+												placeholder={t('YOUR_EMAIL')}
 											/>
 										</div>
 										{/*  Необходимый реквизит и оборудование */}
@@ -590,7 +594,7 @@ function CompetitionApplication(props) {
 												id="filled-basic"
 												size="medium"
 												margin="normal"
-												placeholder="Необходимый реквизит и оборудование (Микрофоны, стойки, прочее)"
+												placeholder={t('REQUISITE')}
 												className="input"
 												type="text"
 												name="requisite"
@@ -608,7 +612,7 @@ function CompetitionApplication(props) {
 												id="filled-basic"
 												size="medium"
 												margin="normal"
-												placeholder="Комментарий"
+												placeholder={t('COMMENT')}
 												className="input"
 												type="text"
 												name="comment"
@@ -621,13 +625,13 @@ function CompetitionApplication(props) {
 										</div>
 
 										<div>
-											Согласие на обработку персональных данных
+											{t('PERSONAL_AGREEMENT')}
 											<br/>
 											<div style={{
 												color: "#00000085",
 												fontSize: "11px"
 											}}>
-												Подавая заявку, я даю своё добровольное согласие на обработку персональных данных в соответствии с действующим законодательством, а также беру на себя всю ответственность за предоставление персональных данных несовершеннолетних, от лиц которых подается заявка
+												{t('PERSONAL_AGREEMENT_TEXT')}
 											</div>
 											<br/>
 											<FormControlLabel
@@ -640,20 +644,19 @@ function CompetitionApplication(props) {
 													value={values.checkbox_personal_data}
 												/>}
 												name="checkbox_personal_data"
-												label="Согласен на обработку персональных данных"
+												label={t('PERSONAL_AGREEMENT_AGREE')}
 											/>
 											<ErrorMessage name="checkbox_personal_data" component="p" className="error" />
 
 											<br/>
 											<br/>
-
-											Согласие на публикацию предоставленной видеозаписи в соцсети "Вконтакте" после проведения конкурса
+											{t('CONTENT_AGREEMENT')}
 											<br/>
 											<div style={{
 												color: "#00000085",
 												fontSize: "11px"
 											}}>
-											По итогам конкурса мы публикуем выступления Лауреатов конкурса в нашей группе вКонтакте, проводя таким образом онлайн- Гала-концерт.
+											{t('CONTENT_AGREEMENT_TEXT')}
 											</div>
 											<br/>
 											<FormControlLabel
@@ -666,7 +669,7 @@ function CompetitionApplication(props) {
 													value={values.checkbox_share_video}
 												/>}
 												name="checkbox_share_video"
-												label="Согласен"
+												label={t('CONTENT_AGREEMENT_APPLY')}
 											/>
 											<ErrorMessage name="checkbox_share_video" component="p" className="error" />
 										</div>
@@ -680,7 +683,7 @@ function CompetitionApplication(props) {
 												onClick={handleSubmit}
 												type="submit"
 											>
-												Отправить{' '}
+												{t('SEND')}{' '}
 											</Button>
 										</div>
 									</Container>

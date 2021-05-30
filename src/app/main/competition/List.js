@@ -3,12 +3,15 @@ import Container from '@material-ui/core/Container';
 import axios from 'axios';
 import CompetitionCard from './CompetitionCard';
 import HttpConfig from '../../config/HttpConfig';
+import { withTranslation } from "react-i18next";
+import i18next from "i18next";
 
 function ListPage() {
 	const [data, setData] = useState(null);
+	const CompetitionCardComponent = withTranslation('mainApp')(CompetitionCard)
 
 	useEffect(() => {
-		axios.get(HttpConfig.getLast10CompetitionUrl).then(res => {
+		axios.get(`${HttpConfig.getLast10CompetitionUrl}&lang=${i18next.language}`).then(res => {
 			setData(res.data);
 		});
 	}, []);
@@ -21,12 +24,12 @@ function ListPage() {
 		<div className="flex flex-col flex-1 items-center justify-center p-16">
 			<Container fixed>
 				{data.map(competition => (
-					<CompetitionCard
+					<CompetitionCardComponent
 						key={competition.id}
 						id={competition.id}
 						image={HttpConfig.domain + competition.img_url}
-					 	title={competition.competitionLanguages[0].title}
-						text={competition.competitionLanguages[0].text}
+					 	title={competition.title}
+						text={competition.text}
 						start_date={competition.start_date}
 						is_ended={competition.is_ended}
 						result_url={competition.result_url}

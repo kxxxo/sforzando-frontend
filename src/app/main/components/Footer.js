@@ -1,3 +1,9 @@
+import i18next from 'i18next';
+import ru from '../../i18n/ru';
+import en from '../../i18n/en';
+import ar from '../../i18n/ar';
+import tr from '../../i18n/tr';
+
 import React from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 
@@ -7,8 +13,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVk, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faMapMarker, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
+i18next.addResourceBundle('en', 'mainApp', en);
+i18next.addResourceBundle('tr', 'mainApp', tr);
+i18next.addResourceBundle('ar', 'mainApp', ar);
+i18next.addResourceBundle('ru', 'mainApp', ru);
+
+import {useTranslation} from 'react-i18next';
+import Button from "@material-ui/core/Button";
 
 function Footer() {
+	const {t} = useTranslation('mainApp');
 	const container = {
 		show: {
 			transition: {
@@ -27,18 +41,19 @@ function Footer() {
 				<div className="inner-footer">
 					<div className="footer-items">
 						<h1>SFORZANDO</h1>
-						<p>Региональный Общественный Благотворительный фонд развития исполнительского искусства РТ</p>
+
+						<p>{t('FUND_DESCRIPTION')}</p>
 					</div>
 					<div className="footer-items">
-						<h3>Contact us</h3>
+						<h3>{t('CONTACT_US')}</h3>
 						<div className="border1"/>
 						<ul>
 							{/*<li><FontAwesomeIcon icon={faMapMarker} size="1x"/>&nbsp; Россия, г. Казань, ул. Чехова д.51 кв. 65</li>*/}
 							<li><FontAwesomeIcon icon={faPhone} size="1x"/>&nbsp;
-								<a href="tel:+79534828494">+7 (953) 482-84-94</a> - Администратор
+								<a href="tel:+79534828494">+7 (953) 482-84-94</a> - {t('ADMINISTRATOR')}
 							</li>
 							<li><FontAwesomeIcon icon={faPhone} size="1x"/>&nbsp;
-								<a href="tel:+79003289926">+7 (900) 328-99-26</a> - Главный администратор
+								<a href="tel:+79003289926">+7 (900) 328-99-26</a> - {t('MAIN_ADMINISTRATOR')}
 							</li>
 							<li><FontAwesomeIcon icon={faEnvelope} size="1x"/>&nbsp; <a href="mailto:sforzandofond@mail.ru">sforzandofond@mail.ru</a></li>
 						</ul>

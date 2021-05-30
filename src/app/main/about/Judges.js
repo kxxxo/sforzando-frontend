@@ -9,12 +9,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Container from '@material-ui/core/Container';
 import HttpConfig from '../../config/HttpConfig';
+import i18next from "i18next";
 
 function JudgesPage() {
 	const [data, setData] = useState(null);
 
 	useEffect(() => {
-		axios.get(HttpConfig.getJudgesUrl).then(res => {
+		axios.get(`${HttpConfig.getJudgesUrl}?lang=${i18next.language}`).then(res => {
 			setData(res.data);
 		});
 	}, []);
@@ -50,10 +51,10 @@ function JudgesPage() {
 								<motion.div variants={item} className="widget flex w-full sm:w-1/2 md:w-2/3 p-36">
 									<Typography component="p" className="mb-16">
 										<Typography variant="h5" color="primary" component="p">
-											{judge.judgeLanguages[0].fio}
+											{judge.fio}
 										</Typography>
 										<br/>
-										<div dangerouslySetInnerHTML={rawText(judge.judgeLanguages[0].description)} />
+										<div dangerouslySetInnerHTML={rawText(judge.description)} />
 									</Typography>
 								</motion.div>
 							</motion.div>

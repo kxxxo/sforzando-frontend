@@ -3,9 +3,13 @@ import axios from 'axios';
 import Container from '@material-ui/core/Container';
 import HttpConfig from '../../config/HttpConfig';
 import CompetitionCard from '../competition/CompetitionCard';
+import { withTranslation } from 'react-i18next';
+
 
 function ResultsPage() {
 	const [data, setData] = useState(null);
+	const CompetitionCardComponent = withTranslation('mainApp')(CompetitionCard)
+
 
 	useEffect(() => {
 		axios.get(HttpConfig.getLast10CompetitionWithResultsUrl).then(res => {
@@ -21,7 +25,7 @@ function ResultsPage() {
 		<div className="flex flex-col flex-1 items-center justify-center p-16">
 			<Container fixed>
 				{data.map(competition => (
-					<CompetitionCard
+					<CompetitionCardComponent
 						key={competition.id}
 						image={HttpConfig.domain + competition.img_url}
 						title={competition.competitionLanguages[0].title}

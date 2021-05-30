@@ -35,6 +35,7 @@ class CompetitionCard extends Component {
 	}
 
 	render() {
+		const { t } = this.props;
 		const url = `/competition/application?id=${this.props.id}`;
 		return (
 			<Card className="mb-32 overflow-hidden rounded-16 shadow">
@@ -62,13 +63,13 @@ class CompetitionCard extends Component {
 					{this.props.rules_file_url &&
 						<Button variant="contained" color="default" size="large" style={{margin: "auto"}}
 								href={HttpConfig.domain + this.props.rules_file_url} role="button">
-							Положение конкурса
+							{t('COMPETITION_RULES')}
 						</Button>
 					}
 					{!this.props.is_ended &&
 						<Button variant="contained" color="primary" size="large" style={{margin: "auto"}}
 								href={url} role="button">
-							Участвовать
+							{t('PARTICIPATE')}
 						</Button>
 					}
 					{this.props.is_ended && this.props.result_url &&
@@ -76,7 +77,7 @@ class CompetitionCard extends Component {
 							href={HttpConfig.domain + this.props.result_url} role="button"
 							target="_blank"
 					>
-						Результаты
+						{t('RESULTS')}
 					</Button>
 					}
 				</CardActions>

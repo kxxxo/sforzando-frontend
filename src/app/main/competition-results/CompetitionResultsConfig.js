@@ -1,12 +1,14 @@
-// import i18next from 'i18next';
+import i18next from 'i18next';
+import ru from '../../i18n/ru';
+import en from '../../i18n/en';
+import ar from '../../i18n/ar';
+import tr from '../../i18n/tr';
 import ResultsPage from './Results';
-// import en from './i18n/en';
-// import tr from './i18n/tr';
-// import ar from './i18n/ar';
 
-// i18next.addResourceBundle('en', 'errorPage', en);
-// i18next.addResourceBundle('tr', 'errorPage', tr);
-// i18next.addResourceBundle('ar', 'errorPage', ar);
+i18next.addResourceBundle('en', 'mainApp', en);
+i18next.addResourceBundle('tr', 'mainApp', tr);
+i18next.addResourceBundle('ar', 'mainApp', ar);
+i18next.addResourceBundle('ru', 'mainApp', ru);
 
 const CompetitionResultsConfig = {
 	settings: {
@@ -23,27 +25,3 @@ const CompetitionResultsConfig = {
 };
 
 export default CompetitionResultsConfig;
-
-/**
- * Lazy load Example
- */
-/*
-import React from 'react';
-
-const ExampleConfig = {
-    settings: {
-        layout: {
-            config: {}
-        }
-    },
-    routes  : [
-        {
-            path     : '/example',
-            component: React.lazy(() => import('./Example'))
-        }
-    ]
-};
-
-export default ExampleConfig;
-
-*/

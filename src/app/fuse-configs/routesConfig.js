@@ -2,7 +2,6 @@ import { Redirect } from 'react-router-dom';
 import FuseUtils from '@fuse/utils';
 import ErrorConfig from 'app/main/error/ErrorConfig';
 import AboutConfig from 'app/main/about/AboutConfig';
-import CompetitionConfig from 'app/main/competition/CompetitionConfig';
 import HomeConfig from 'app/main/home/HomeConfig';
 import GalleryConfig from '../main/gallery/GalleryConfig';
 import CompetitionResultsConfig from '../main/competition-results/CompetitionResultsConfig';
@@ -11,7 +10,6 @@ import ApplicationConfig from '../main/components/competition-application/Compet
 const routeConfigs = [
 	ErrorConfig,
 	AboutConfig,
-	// CompetitionConfig,
 	CompetitionResultsConfig,
 	HomeConfig,
 	GalleryConfig,

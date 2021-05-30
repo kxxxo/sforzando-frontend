@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { changeLanguage } from 'app/store/i18nSlice';
+import Cookies from 'js-cookie';
 
 const languages = [
 	{
@@ -49,8 +50,9 @@ function LanguageSwitcher(props) {
 	};
 
 	function handleLanguageChange(lng) {
+		Cookies.set('language', lng.id);
+		window.location.reload();
 		dispatch(changeLanguage(lng.id));
-
 		langMenuClose();
 	}
 
