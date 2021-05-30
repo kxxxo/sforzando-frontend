@@ -8,8 +8,9 @@ import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Container from '@material-ui/core/Container';
-import HttpConfig from '../../config/HttpConfig';
 import i18next from "i18next";
+import HttpConfig from '../../config/HttpConfig';
+
 
 function JudgesPage() {
 	const [data, setData] = useState(null);

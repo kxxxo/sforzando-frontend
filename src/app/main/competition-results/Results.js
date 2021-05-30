@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Container from '@material-ui/core/Container';
+import { withTranslation } from 'react-i18next';
 import HttpConfig from '../../config/HttpConfig';
 import CompetitionCard from '../competition/CompetitionCard';
-import { withTranslation } from 'react-i18next';
+
 
 
 function ResultsPage() {

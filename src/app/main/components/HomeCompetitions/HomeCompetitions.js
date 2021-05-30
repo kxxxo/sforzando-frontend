@@ -6,9 +6,9 @@ import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import { motion } from 'framer-motion';
 import axios from 'axios';
+import i18next from "i18next";
 import CompetitionCard from './CompetitionCard';
 import HttpConfig from '../../../config/HttpConfig';
-import i18next from "i18next";
 
 
 function HomeCompetitions() {

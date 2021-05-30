@@ -1,8 +1,4 @@
 import i18next from 'i18next';
-import ru from '../../i18n/ru';
-import en from '../../i18n/en';
-import ar from '../../i18n/ar';
-import tr from '../../i18n/tr';
 
 import React from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
@@ -13,13 +9,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVk, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faMapMarker, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
+import {useTranslation} from 'react-i18next';
+import Button from "@material-ui/core/Button";
+import ru from '../../i18n/ru';
+import en from '../../i18n/en';
+import ar from '../../i18n/ar';
+import tr from '../../i18n/tr';
+
 i18next.addResourceBundle('en', 'mainApp', en);
 i18next.addResourceBundle('tr', 'mainApp', tr);
 i18next.addResourceBundle('ar', 'mainApp', ar);
 i18next.addResourceBundle('ru', 'mainApp', ru);
 
-import {useTranslation} from 'react-i18next';
-import Button from "@material-ui/core/Button";
 
 function Footer() {
 	const {t} = useTranslation('mainApp');

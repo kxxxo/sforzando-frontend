@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Container from '@material-ui/core/Container';
 import axios from 'axios';
-import CompetitionCard from './CompetitionCard';
-import HttpConfig from '../../config/HttpConfig';
 import { withTranslation } from "react-i18next";
 import i18next from "i18next";
+import CompetitionCard from './CompetitionCard';
+import HttpConfig from '../../config/HttpConfig';
 
 function ListPage() {
 	const [data, setData] = useState(null);

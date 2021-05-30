@@ -1,10 +1,10 @@
 import i18next from 'i18next';
+import React from 'react';
 import ru from '../../i18n/ru';
 import en from '../../i18n/en';
 import ar from '../../i18n/ar';
 import tr from '../../i18n/tr';
 
-import React from 'react';
 import HomeCarousel from '../components/HomeCarousel';
 import HomeCompetition from '../components/HomeCompetitions/HomeCompetitions';
 

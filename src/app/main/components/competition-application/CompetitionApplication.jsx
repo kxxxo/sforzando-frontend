@@ -24,11 +24,11 @@ import {
 } from '@material-ui/core';
 import Icon from "@material-ui/core/Icon";
 import Typography from "@material-ui/core/Typography";
-
+import { useTranslation } from "react-i18next";
 import validationsSchema from '../../../../validation-schemas';
 import './styles.css';
 import HttpConfig from '../../../config/HttpConfig';
-import { useTranslation } from "react-i18next";
+
 
 function CompetitionApplication(props) {
 	const {t} = useTranslation('mainApp');
