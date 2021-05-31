@@ -50,6 +50,9 @@ const locale = {
 	CONTENT_AGREEMENT_TEXT: 'По итогам конкурса мы публикуем выступления Лауреатов конкурса в нашей группе вКонтакте, проводя таким образом онлайн- Гала-концерт.',
 	CONTENT_AGREEMENT_APPLY: 'CONTENT_AGREEMENT_APPLY',
 	SEND: 'Отправить',
+	ADDRESS: 'Адрес',
+	ADDRESS_VALUE: 'Россия, г. Казань, ул. Чехова д.51 кв. 65',
+
 };
 
 export default locale;

@@ -11,6 +11,8 @@ import { darken } from '@material-ui/core/styles/colorManipulator';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhone } from "@fortawesome/free-solid-svg-icons";
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -60,6 +62,89 @@ function AboutPage() {
 								</div>
 							</div>
 						</div>
+						<div className="mb-32 print:mt-0">
+							<Table className="simple">
+								<TableBody>
+									<TableRow>
+										<TableCell>
+											<Typography
+												className="font-normal"
+												variant="subtitle1"
+												color="textSecondary"
+											>
+											{t('ADDRESS')}
+											</Typography>
+										</TableCell>
+										<TableCell align="right">
+											<Typography
+												className="font-normal"
+												variant="subtitle1"
+												color="textSecondary"
+											>
+												{t('ADDRESS_VALUE')}
+											</Typography>
+										</TableCell>
+									</TableRow>
+									<TableRow>
+										<TableCell>
+											<Typography
+												className="font-normal"
+												variant="subtitle1"
+												color="textSecondary"
+											>
+												{t('ADMINISTRATOR')}
+											</Typography>
+										</TableCell>
+										<TableCell align="right">
+											<Typography
+												className="font-normal"
+												variant="subtitle1"
+												color="textSecondary"
+											>
+												<a href="tel:+79534828494" style={{
+													color:'#6b7280'
+												}}>
+													<FontAwesomeIcon icon={faPhone} size="1x"/>&nbsp;
+													+7 (953) 482-84-94
+												</a>
+											</Typography>
+										</TableCell>
+									</TableRow>
+
+
+									<TableRow>
+										<TableCell>
+											<Typography
+												className="font-normal"
+												variant="subtitle1"
+												color="textSecondary"
+											>
+												{t('MAIN_ADMINISTRATOR')}
+											</Typography>
+										</TableCell>
+										<TableCell align="right">
+											<Typography
+												className="font-normal"
+												variant="subtitle1"
+												color="textSecondary"
+											>
+												<a href="tel:+79003289926"  style={{
+													color:'#6b7280'
+												}}>
+													<FontAwesomeIcon icon={faPhone} size="1x"/>&nbsp;
+													+7 (900) 328-99-26
+												</a>
+											</Typography>
+										</TableCell>
+									</TableRow>
+
+								</TableBody>
+							</Table>
+						</div>
+
+
+
+
 					</CardContent>
 				</Card>
 			</motion.div>

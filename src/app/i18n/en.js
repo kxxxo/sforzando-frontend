@@ -51,6 +51,9 @@ const locale = {
 	CONTENT_AGREEMENT_TEXT: 'After the contest we make a Gala online',
 	CONTENT_AGREEMENT_APPLY: 'I agree',
 	SEND: 'Send',
+	ADDRESS: 'Адрес',
+	ADDRESS_VALUE: 'Россия, г. Казань, ул. Чехова д.51 кв. 65',
+
 };
 
 export default locale;
