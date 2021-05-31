@@ -15,12 +15,6 @@ const locale = {
 		'the search for new young stars of the classical scene, assistance in the realization of their talent on the world stage and thereby propaganda' +
 		' academic music art.',
 	ORGANIZATION_NAME: 'Organization name',
-	INN: 'ИНН',
-	KPP: 'КПП',
-	OKPO: 'ОПКО',
-	OKATO: 'ОКАТО',
-	OGRN: 'ОГРН',
-	SFORZANDO_FULL: 'РБОФ «Сфорцандо»',
 
 	COMPETITION_RULES: 'Competition regulations',
 	PARTICIPATE: 'Participate',
