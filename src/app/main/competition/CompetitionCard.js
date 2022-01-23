@@ -43,7 +43,7 @@ class CompetitionCard extends Component {
 					<motion.div className="flex flex-wrap" variants={this.container} initial="hidden" animate="show">
 						<motion.div variants={this.item} className="widget flex w-full sm:w-1/2 md:w-1/3 p-12">
 							<img src={this.props.image} alt="post" className="rounded-8"
-								style={{ objectFit: "cover" }}/>
+								style={{ objectFit: "contain", objectPosition: "top", marginTop: "15px" }}/>
 						</motion.div>
 						<motion.div variants={this.item} className="widget flex w-full sm:w-1/2 md:w-2/3 p-36">
 							<Typography component="p" className="mb-16">
