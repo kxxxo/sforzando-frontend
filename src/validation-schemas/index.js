@@ -28,6 +28,12 @@ const validationsSchema = yup.object().shape({
 	}),
 	checkbox_personal_data: yup.boolean().oneOf([true], 'Обязательно'),
 	checkbox_share_video: yup.boolean().oneOf([true], 'Обязательно'),
+	contactMail: yup
+		.string()
+		.matches(emailRegexp, 'Не верный Email')
+		.max(EMAIL_MAX_LENGTH, `Должно быть ${EMAIL_MAX_LENGTH} символов или меньше`)
+		.min(5, 'Должно быть 5 символов или больше')
+		.required('Обязательно'),
 
 });
 
