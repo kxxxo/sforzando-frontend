@@ -587,6 +587,7 @@ function CompetitionApplication(props) {
 												name="contactMail"
 												placeholder={t('YOUR_EMAIL')}
 											/>
+											<ErrorMessage name="contactMail" component="p" className="error" />
 										</div>
 										{/*  Необходимый реквизит и оборудование */}
 										<div className="row">
