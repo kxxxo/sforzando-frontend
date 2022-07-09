@@ -1,7 +1,7 @@
 export default class HttpConfig {
 	//	static domain = 'https://api.sforzando-fund.com';
-	// static domain = 'https://sforzando-api.kxxo.ru';
-	static domain = 'http://localhost:82';
+	static domain = 'https://sforzando-api.kxxo.ru';
+	// static domain = 'http://localhost:82';
 
 	static getLast3CompetitionUrl = `${this.domain}/site/get-competitions?page=1&count=3`;
 
