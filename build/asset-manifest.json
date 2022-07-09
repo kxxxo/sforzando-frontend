@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0f390379.chunk.css",
+    "main.js": "/static/js/main.ad1685ae.chunk.js",
+    "runtime-main.js": "/static/js/runtime-main.f8097a58.js",
+    "static/css/2.2f76bc69.chunk.css": "/static/css/2.2f76bc69.chunk.css",
+    "static/js/2.d2d1594f.chunk.js": "/static/js/2.d2d1594f.chunk.js",
+    "static/js/3.2580a202.chunk.js": "/static/js/3.2580a202.chunk.js",
+    "index.html": "/index.html",
+    "static/js/2.d2d1594f.chunk.js.LICENSE.txt": "/static/js/2.d2d1594f.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/static/media/poppins-latin-900italic.babad407.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f8097a58.js",
+    "static/css/2.2f76bc69.chunk.css",
+    "static/js/2.d2d1594f.chunk.js",
+    "static/css/main.0f390379.chunk.css",
+    "static/js/main.ad1685ae.chunk.js"
+  ]
+}
