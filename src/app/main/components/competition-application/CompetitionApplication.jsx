@@ -123,8 +123,8 @@ function CompetitionApplication(props) {
 									checked: [],
 									phone: '',
 									teacher: '',
-									teacherPhone: '',
-									teacherMail: '',
+									//teacherPhone: '',
+									//teacherMail: '',
 									concertMaester: '',
 									concertMaesterPhone: '',
 									concertMaesterMail: '',
@@ -447,46 +447,21 @@ function CompetitionApplication(props) {
 												id="filled-basic"
 												size="medium"
 												margin="normal"
-												rows="3"
-												placeholder={t('TEACHER')}
-												className="height-input"
+												rows={4}
+												placeholder={t('TEACHER_PLACE')}
+												className="input"
 												type="text"
 												name="teacher"
 												onBlur={handleBlur}
 												onChange={handleChange}
 												value={values.teacher}
+												multiline
 											/>
 
 											<ErrorMessage name="teacher" component="p" className="error" />
 										</div>
 
-										{/*Телефон преподавателя*/}
-										{/*Email преподавателя*/}
-										<div className="row">
-											<TextField
-												className="input"
-												size="medium"
-												type="text"
-												value={values.teacherPhone}
-												onBlur={handleBlur}
-												onChange={handleChange}
-												name="teacherPhone"
-												placeholder={t('TELEPHONE')}
-											/>
-											<ErrorMessage name="teacherPhone" component="p" className="error" />
-											<TextField
-												className="input"
-												size="medium"
-												type="text"
-												value={values.teacherMail}
-												onChange={handleChange}
-												onBlur={handleBlur}
-												name="teacherMail"
-												placeholder="Email"
-											/>
 
-											<ErrorMessage name="teacherMail" component="span" className="error" />
-										</div>
 
 										{/*  Концертмейстер */}
 										<h2 className="second-page__title">{t('CONCERTMASTER')}</h2>

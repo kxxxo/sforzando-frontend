@@ -36,6 +36,8 @@ const locale = {
 	CONTACT_PHONE:'Contact phone',
 	FORM_OF_PERFORMANCE:'The program of the performance, indicating the initials of the authors of the works, the exact timing',
 	TEACHER: 'Teacher',
+	TEACHER_PLACE: 'Преподаватель (c email и телефоном, если несколько - через запятую)',
+
 	TELEPHONE: 'Telephone',
 	CONCERTMASTER: 'Concertmaster',
 	PARENT: 'Parent',
